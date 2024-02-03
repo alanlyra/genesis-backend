@@ -9,7 +9,8 @@ const bodyParser = require('body-parser')
 // Importando arquivo de rotas
 const healthyRouter = require('./routers/healthy')
 const empresasRouter = require('./routers/empresas')
-const projectsRouter = require('./routers/projects')
+const createProjectsRouter = require('./routers/create-projects')
+const getProjectsRouter = require('./routers/get-projects')
 //const informacoesCboRouter = require('./routers/informacoesCbo')
 
 const app = express()
@@ -28,7 +29,8 @@ const port = process.env.PORT || 4000
 // Aplicando rotas ao Express
 app.use(healthyRouter)
 app.use("/empresas", empresasRouter)
-app.use("/projects", projectsRouter)
+app.use("/create-projects", createProjectsRouter)
+app.use("/get-projects", getProjectsRouter)
 app.use("/pdf", createProxyMiddleware({
     target: process.env.DOCUMENTOS_PDF_URL,
     pathRewrite: {

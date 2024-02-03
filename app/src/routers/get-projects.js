@@ -6,7 +6,7 @@ const Projects = require('../models/Projects')
 // Retorna um string indicando que o servidor está funcionando
 router.get('/', async (req, res) => {
 
-    const response = await Projects.find({}, 'name description startDate endDate bibliometrics status')
+    const response = await Projects.find({}, 'name description startDate endDate bibliometrics status').populate('bibliometrics.documents')
     console.log(response)
 
     res.send(response)

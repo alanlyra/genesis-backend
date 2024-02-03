@@ -19,30 +19,7 @@ router.get('/', async (req, res) => {
             "method": "bibliometrics",
             "keywords": ["word1", "word2", "word3"],
             "documents": [
-                {
-                    "name": "Document 1",
-                    "description": "Description of document 1",
-                    "uploadDate": "2021-01-01",
-                    "URL": "http://www.google.com",
-                    "preprocessing": {
-                        "text": "all the text from the pdf",
-                        "sentences": ["all", "the text", "from the pdf"]
-                    }
-                },
-                {
-                    "name": "Document 2",
-                    "description": "Description of document 2",
-                    "uploadDate": "2021-01-01",
-                    "URL": "http://www.google.com",
-                    "preprocessing": {
-                        "text": "all the text from the pdf",
-                        "sentences": [
-                            { "_id": 1, "text": "all" },
-                            { "_id": 2, "text": "the text" },
-                            { "_id": 3, "text": "from the pdf" }
-                        ]
-                    }
-                }
+                
             ]
         },
         "roadmap": [

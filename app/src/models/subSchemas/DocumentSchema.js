@@ -10,6 +10,23 @@ const DocumentSchema = new Schema({
         text: String,
         sentences: [Schema.Types.Mixed]
     }
+},{
+    toJSON:{virtuals: true},
+    toObject:{virtuals: true}
 });
 
-module.exports = DocumentSchema;
+// Relação entre usuário e role pelo mongoose
+DocumentSchema.virtual('projects', {
+    ref: 'Document',
+    localField: '_id',
+    foreignField: 'bibliometrics.documents'
+})
+
+DocumentSchema.pre('save', async function (next) {
+    const document = this
+    next()
+})
+
+const Document = mongoose.model('Document', DocumentSchema, 'Documents')
+
+module.exports = Document

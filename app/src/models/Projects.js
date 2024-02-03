@@ -19,7 +19,10 @@ const ProjectsSchema = new Schema({
     bibliometrics: {
         method: String,
         keywords: [String],
-        documents: [DocumentSchema]
+        documents: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Document'
+        }]
     },
     roadmap: [RoadmapSchema],
     scenarios: [ScenariosSchema],

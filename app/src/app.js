@@ -11,6 +11,7 @@ const healthyRouter = require('./routers/healthy')
 const empresasRouter = require('./routers/empresas')
 const createProjectsRouter = require('./routers/create-projects')
 const getProjectsRouter = require('./routers/get-projects')
+const getDocumentsRouter = require('./routers/get-documents')
 //const informacoesCboRouter = require('./routers/informacoesCbo')
 
 const app = express()
@@ -31,6 +32,7 @@ app.use(healthyRouter)
 app.use("/empresas", empresasRouter)
 app.use("/create-projects", createProjectsRouter)
 app.use("/get-projects", getProjectsRouter)
+app.use("/get-documents", getDocumentsRouter)
 app.use("/pdf", createProxyMiddleware({
     target: process.env.DOCUMENTOS_PDF_URL,
     pathRewrite: {

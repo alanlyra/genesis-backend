@@ -15,7 +15,7 @@ const DocumentSchema = new Schema({
     toObject:{virtuals: true}
 });
 
-// Relação entre usuário e role pelo mongoose
+// Relação entre Projects e Document pelo mongoose
 DocumentSchema.virtual('projects', {
     ref: 'Document',
     localField: '_id',

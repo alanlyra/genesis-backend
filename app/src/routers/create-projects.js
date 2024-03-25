@@ -18,26 +18,9 @@ router.get('/', async (req, res) => {
         "bibliometrics": {
             "method": "bibliometrics",
             "keywords": ["word1", "word2", "word3"],
-            "documents": [
-                
-            ]
+            "documents": []
         },
-        "roadmap": [
-            {
-                "document": 1,
-                "sentence": 1,
-                "forecast": "forecast",
-                "forecastDate": "next year",
-                "explicitDate": "2025"
-            },
-            {
-                "document": 1,
-                "sentence": 2,
-                "forecast": "forecast",
-                "forecastDate": "next year",
-                "explicitDate": "2025"
-            }
-        ],
+        "roadmap": [],
         "scenarios": {
             "plausible": "Scenario 1",
             "pessimistic": "Scenario 2",

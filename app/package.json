@@ -21,6 +21,7 @@
     "hbs": "^4.1.1",
     "http-proxy-middleware": "^2.0.6",
     "mongodb": "^3.6.6",
+    "pdf-parse": "^1.1.1",
     "mongoose": "^6.0.14",
     "round-to": "^5.0.0"
   },

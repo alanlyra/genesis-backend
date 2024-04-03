@@ -12,6 +12,8 @@ const empresasRouter = require('./routers/empresas')
 const createProjectsRouter = require('./routers/create-projects')
 const getProjectsRouter = require('./routers/get-projects')
 const getDocumentsRouter = require('./routers/get-documents')
+const getRoadmapRouter = require('./routers/get-roadmap')
+const editItemRoadmapRouter = require('./routers/edit-item-roadmap')
 //const informacoesCboRouter = require('./routers/informacoesCbo')
 
 const app = express()
@@ -33,6 +35,8 @@ app.use("/empresas", empresasRouter)
 app.use("/create-projects", createProjectsRouter)
 app.use("/get-projects", getProjectsRouter)
 app.use("/get-documents", getDocumentsRouter)
+app.use("/get-roadmap", getRoadmapRouter)
+app.use("/edit-item-roadmap", editItemRoadmapRouter)
 app.use("/pdf", createProxyMiddleware({
     target: process.env.DOCUMENTOS_PDF_URL,
     pathRewrite: {

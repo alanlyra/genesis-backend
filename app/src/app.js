@@ -8,19 +8,17 @@ const bodyParser = require('body-parser')
 
 // Importando arquivo de rotas
 const healthyRouter = require('./routers/healthy')
-const empresasRouter = require('./routers/empresas')
-const createProjectsRouter = require('./routers/create-projects')
-const getProjectsRouter = require('./routers/get-projects')
-const getDocumentsRouter = require('./routers/get-documents')
-const getRoadmapRouter = require('./routers/get-roadmap')
-const editItemRoadmapRouter = require('./routers/edit-item-roadmap')
+const projectsRouter = require('./routers/projects')
+const documentsRouter = require('./routers/documents')
+const roadmapRouter = require('./routers/roadmap')
+const eventsRoadmapRouter = require('./routers/events-roadmap')
 //const informacoesCboRouter = require('./routers/informacoesCbo')
 
 const app = express()
 
 // Criando o parser de json (as requisições chegam e vão como objetos JSON)
 const jsonParser = bodyParser.json({
-    limit: "50mb"
+    limit: "50000mb"
 })
 
 // Habilitando CORS e Transformando objeto recebido em JSON
@@ -31,12 +29,10 @@ const port = process.env.PORT || 4000
 
 // Aplicando rotas ao Express
 app.use(healthyRouter)
-app.use("/empresas", empresasRouter)
-app.use("/create-projects", createProjectsRouter)
-app.use("/get-projects", getProjectsRouter)
-app.use("/get-documents", getDocumentsRouter)
-app.use("/get-roadmap", getRoadmapRouter)
-app.use("/edit-item-roadmap", editItemRoadmapRouter)
+app.use("/projects", projectsRouter)
+app.use("/documents", documentsRouter)
+app.use("/roadmap", roadmapRouter)
+app.use("/events-roadmap", eventsRoadmapRouter)
 app.use("/pdf", createProxyMiddleware({
     target: process.env.DOCUMENTOS_PDF_URL,
     pathRewrite: {

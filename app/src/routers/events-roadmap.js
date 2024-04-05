@@ -1,8 +1,8 @@
 const express = require('express')
 const router = new express.Router()
 const Projects = require('../models/Projects');
-const RoadmapSchema = require('../models/subSchemas/RoadmapSchema');
 
+//Rota para update de um evento do roadmap
 router.put('/:_id', async (req, res) => {
     const { _id } = req.params;
     const updates = req.body;
@@ -30,6 +30,28 @@ router.put('/:_id', async (req, res) => {
     }
 });
 
+//Rota para deletar um evento do roadmap
+router.delete('/:_id', async (req, res) => {
+    const { _id } = req.params;
+
+    try {
+        const project = await Projects.findOneAndUpdate(
+            { 'roadmap._id': _id },
+            { $pull: { roadmap: { _id: _id } } },
+            { new: true }
+        );
+
+        if (!project) {
+            return res.status(404).send({ message: 'Project not found' });
+        }
+
+        res.send(project);
+    } catch (error) {
+        res.status(500).send({ message: 'Server error' });
+    }
+});
+
+//Rotas para retornar um evento do roadmap
 router.get('/:_id', async (req, res) => {
     const { _id } = req.params;
 

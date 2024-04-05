@@ -12,7 +12,7 @@ router.get('/:_id', async (req, res) => {
         return res.status(404).send({ message: 'Project not found' });
     }
 
-    res.send(project.bibliometrics.documents);
+    res.send(project);
 });
 
 // Rota para editar um documento

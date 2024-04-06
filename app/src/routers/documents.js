@@ -15,6 +15,30 @@ router.get('/:_id', async (req, res) => {
     res.send(project);
 });
 
+// Rota para retornar um documento pelo id
+router.get('/document/:_id', async (req, res) => {
+  const { _id } = req.params;
+
+  const document = await DocumentSchema.findById(_id);
+  if (!document) {
+      return res.status(404).send({ message: 'Document not found' });
+  }
+
+  res.send(document); 
+});
+
+// Rota para retornar um documento pelo nome
+router.get('/documentName/:name', async (req, res) => {
+  const { name } = req.params;
+
+  const document = await DocumentSchema.findOne({ name: name });
+  if (!document) {
+      return res.status(404).send({ message: 'Document not found' });
+  }
+
+  res.send(document); 
+});
+
 // Rota para editar um documento
 router.put('/:documentId', async (req, res) => {
     const { documentId } = req.params;

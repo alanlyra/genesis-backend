@@ -6,7 +6,7 @@ const Projects = require('../models/Projects')
 // Rota para retornar todos os projetos
 router.get('/', async (req, res) => {
 
-    const response = await Projects.find({}, 'name description startDate endDate bibliometrics roadmap status  owner createdDate createdBy deleted deletedDate deletedBy updated updatedLastDate updatedLastBy').populate('bibliometrics.documents').populate('roadmap.document')
+    const response = await Projects.find({}, 'name description startDate endDate bibliometrics roadmap status owner createdDate createdBy deleted deletedDate deletedBy updated updatedLastDate updatedLastBy').populate('bibliometrics.documents').populate('roadmap.document')
     console.log(response)
 
     res.send(response)
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const projectData = req.body;
     const project = new Projects(projectData);
-
+    console.log("Criando novo projeto...");
     try {
         const response = await project.save();
         res.send(response)

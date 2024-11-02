@@ -11,6 +11,7 @@ const healthyRouter = require('./routers/healthy')
 const projectsRouter = require('./routers/projects')
 const documentsRouter = require('./routers/documents')
 const roadmapRouter = require('./routers/roadmap')
+const workflowRouter = require('./routers/workflow')
 const eventsRoadmapRouter = require('./routers/events-roadmap')
 //const informacoesCboRouter = require('./routers/informacoesCbo')
 
@@ -31,6 +32,7 @@ const port = process.env.PORT || 4000
 app.use(healthyRouter)
 app.use("/projects", projectsRouter)
 app.use("/documents", documentsRouter)
+app.use("/workflow", workflowRouter)
 app.use("/roadmap", roadmapRouter)
 app.use("/events-roadmap", eventsRoadmapRouter)
 app.use("/pdf", createProxyMiddleware({

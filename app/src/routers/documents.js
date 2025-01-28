@@ -78,4 +78,23 @@ router.put('/:documentId', async (req, res) => {
     }
   });
 
+  // Rota para retornar o Projeto de um documento recebendo o id do documento
+  router.delete('/findProjectByDocument/:documentId', async (req, res) => {
+    const { documentId } = req.params;
+  
+    try {
+      const project = await Projects.findOne({ 'bibliometrics.documents': document });
+        if (!project) {
+            return res.status(404).send({ message: 'Project not found' });
+        }
+
+      res.send(project); 
+      
+    } catch (error) {
+      res.status(500).send({ message: 'Server error' });
+    }
+  });
+
+  
+
 module.exports = router

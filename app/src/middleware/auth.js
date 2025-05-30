@@ -4,7 +4,6 @@ const GENESIS_IES_LOGIN_SERVICE_URL = process.env.GENESIS_IES_LOGIN_SERVICE_URL
 
 const auth = async (req, res, next) => {
 
-
     try {
         const response = await axios({
             method: 'get',

@@ -2,8 +2,10 @@
 const express = require('express')
 const router = new express.Router()
 const Projects = require('../models/Projects')
+const auth = require('../middleware/auth')
 
 // Rota para retornar todos os projetos
+//router.get('/', auth, async (req, res) => {
 router.get('/', async (req, res) => {
 
     const response = await Projects.find({}, 'name description startDate endDate bibliometrics roadmap status owner createdDate createdBy deleted deletedDate deletedBy updated updatedLastDate updatedLastBy').populate('bibliometrics.documents').populate('roadmap.document').populate('scopusResearch')

@@ -4,12 +4,6 @@ const axios = require('axios');
 const Projects = require('../models/Projects')
 const DocumentSchema = require('../models/subSchemas/DocumentSchema')
 
-router.get('/', async (req, res) => {
-
-    res.send(`[${process.env.PROJECT_ENVIRONMENT.toUpperCase()}] Servidor backend do GENESIS está no ar`)
-
-})
-
 // Rota para retornar o roadmap de um projeto e gerar scenarios
 router.put('/:_id', async (req, res) => {
     const { _id } = req.params;
@@ -41,19 +35,19 @@ router.put('/:_id', async (req, res) => {
     }
 });
 
-// Rota para retornar o roadmap de um projeto
-router.get('/roadmap/:_id', async (req, res) => {
+// Rota para retornar os scenarios de um projeto
+router.get('/:_id', async (req, res) => {
     const { _id } = req.params;
 
-    const project = await Projects.findById(_id).populate('roadmap');
+    const project = await Projects.findById(_id).populate('scenarios');
     if (!project) {
         return res.status(404).send({ message: 'Project not found' });
     }
 
-    res.send(project.roadmap);
+    res.send(project.scenarios);
 });
 
-// Rota para retornar o roadmap de um documento
+// Rota para retornar os scenarios de um documento (SEM USO ATUAL)
 router.get('/document/:_id', async (req, res) => {
     const { _id } = req.params;
 
